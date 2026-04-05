@@ -8,491 +8,165 @@
 <style>
   :root {
     --violet: #7B3FA0;
-    --violet-dark: #5a2d78;
     --violet-light: #f0e8f8;
     --apricot: #F5A87A;
-    --apricot-dark: #e08a55;
     --lavender: #C09ADE;
     --cream: #FFF8F4;
     --ink: #2A1A2E;
     --ink-light: #5a4a62;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 16px 60px;
-    position: relative;
-    overflow-x: hidden;
+    font-family:'DM Sans',sans-serif;
+    background:var(--cream);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:0 16px 60px;
+    overflow-x:hidden;
   }
-
-  /* Hintergrund-Dekoration */
   body::before {
-    content: '';
-    position: fixed;
-    top: -120px; right: -120px;
-    width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(192,154,222,0.25) 0%, transparent 70%);
-    pointer-events: none;
+    content:''; position:fixed; top:-120px; right:-120px;
+    width:420px; height:420px;
+    background:radial-gradient(circle,rgba(192,154,222,.25) 0%,transparent 70%);
+    pointer-events:none;
   }
   body::after {
-    content: '';
-    position: fixed;
-    bottom: -80px; left: -80px;
-    width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(245,168,122,0.2) 0%, transparent 70%);
-    pointer-events: none;
+    content:''; position:fixed; bottom:-80px; left:-80px;
+    width:320px; height:320px;
+    background:radial-gradient(circle,rgba(245,168,122,.2) 0%,transparent 70%);
+    pointer-events:none;
   }
-
-  .container {
-    max-width: 480px;
-    width: 100%;
-    padding-top: 48px;
-  }
-
-  /* HEADER */
-  .header {
-    text-align: center;
-    margin-bottom: 36px;
-    animation: fadeUp 0.6s ease both;
-  }
-
+  .container { max-width:480px; width:100%; padding-top:48px; }
+  .header { text-align:center; margin-bottom:36px; animation:fadeUp .6s ease both; }
   .logo-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 90px; height: 90px;
-    background: linear-gradient(135deg, var(--violet), var(--lavender));
-    border-radius: 28px;
-    margin-bottom: 16px;
-    box-shadow: 0 8px 32px rgba(123,63,160,0.28);
-    font-size: 42px;
+    display:inline-flex; align-items:center; justify-content:center;
+    width:90px; height:90px;
+    background:linear-gradient(135deg,var(--violet),var(--lavender));
+    border-radius:28px; margin-bottom:16px;
+    box-shadow:0 8px 32px rgba(123,63,160,.28); font-size:42px;
   }
-
-  .brand-name {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--violet);
-    letter-spacing: -0.5px;
-    margin-bottom: 6px;
-  }
-
-  .brand-tagline {
-    font-size: 14px;
-    color: var(--ink-light);
-    line-height: 1.5;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-
-  /* LINKS */
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-
+  .brand-name { font-family:'Outfit',sans-serif; font-weight:900; font-size:26px; color:var(--violet); letter-spacing:-.5px; margin-bottom:6px; }
+  .brand-tagline { font-size:14px; color:var(--ink-light); line-height:1.5; max-width:280px; margin:0 auto; }
+  .links { display:flex; flex-direction:column; gap:14px; margin-bottom:28px; }
   .link-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 20px;
-    border-radius: 18px;
-    text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    animation: fadeUp 0.6s ease both;
-    border: none;
-    width: 100%;
-    text-align: left;
+    display:flex; align-items:center; gap:14px;
+    padding:16px 20px; border-radius:18px;
+    text-decoration:none; font-family:'DM Sans',sans-serif;
+    font-weight:500; font-size:15px; cursor:pointer;
+    transition:transform .18s ease,box-shadow .18s ease;
+    animation:fadeUp .6s ease both; width:100%;
+    -webkit-tap-highlight-color:transparent;
   }
+  .link-card:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.13); }
+  .link-card.primary { background:linear-gradient(135deg,var(--violet),#9B5FC0); color:#fff; box-shadow:0 4px 20px rgba(123,63,160,.35); border:none; }
+  .link-card.primary .lc-icon { background:rgba(255,255,255,.2); }
+  .link-card.checker { background:linear-gradient(135deg,var(--apricot),#f0805a); color:#fff; box-shadow:0 4px 20px rgba(245,168,122,.35); border:none; }
+  .link-card.checker .lc-icon { background:rgba(255,255,255,.2); }
+  .link-card.secondary { background:#fff; color:var(--ink); box-shadow:0 2px 12px rgba(0,0,0,.07); border:1.5px solid var(--violet-light); }
+  .link-card.secondary .lc-icon { background:var(--violet-light); color:var(--violet); }
+  .lc-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .lc-text { flex:1; }
+  .lc-title { font-weight:700; font-size:15px; line-height:1.2; }
+  .lc-sub { font-size:12px; opacity:.8; margin-top:2px; }
+  .lc-arrow { font-size:18px; opacity:.5; }
+  .badge { background:var(--apricot); color:#fff; font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; letter-spacing:.5px; margin-left:8px; }
+  .link-card:nth-child(1) { animation-delay:.1s; }
+  .link-card:nth-child(2) { animation-delay:.18s; }
+  .link-card:nth-child(3) { animation-delay:.26s; }
+  .link-card:nth-child(4) { animation-delay:.34s; }
 
-  .link-card:hover, .link-card:active {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
-  }
-
-  /* Haupt-CTA: Tracker kaufen */
-  .link-card.primary {
-    background: linear-gradient(135deg, var(--violet), #9B5FC0);
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(123,63,160,0.35);
-  }
-  .link-card.primary .lc-icon { background: rgba(255,255,255,0.2); }
-
-  /* Symptom Checker */
-  .link-card.checker {
-    background: linear-gradient(135deg, var(--apricot), #f0805a);
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(245,168,122,0.35);
-  }
-  .link-card.checker .lc-icon { background: rgba(255,255,255,0.2); }
-
-  /* Sekundär */
-  .link-card.secondary {
-    background: #fff;
-    color: var(--ink);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    border: 1.5px solid var(--violet-light);
-  }
-  .link-card.secondary .lc-icon { background: var(--violet-light); color: var(--violet); }
-
-  .lc-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .lc-text { flex: 1; }
-  .lc-title { font-weight: 700; font-size: 15px; line-height: 1.2; }
-  .lc-sub { font-size: 12px; opacity: 0.8; margin-top: 2px; }
-
-  .lc-arrow { font-size: 18px; opacity: 0.5; }
-
-  /* BADGE "NEU" */
-  .badge {
-    background: var(--apricot);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* SYMPTOM CHECKER MODAL */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(42,26,46,0.6);
-    z-index: 100;
-    align-items: flex-end;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-  }
-  .modal-overlay.active { display: flex; }
-
-  .modal {
-    background: var(--cream);
-    border-radius: 28px 28px 0 0;
-    padding: 28px 24px 40px;
-    width: 100%;
-    max-width: 480px;
-    max-height: 90vh;
-    overflow-y: auto;
-    animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
-  }
-
-  @keyframes slideUp {
-    from { transform: translateY(100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  .modal-handle {
-    width: 40px; height: 4px;
-    background: var(--lavender);
-    border-radius: 4px;
-    margin: 0 auto 20px;
-  }
-
-  .modal-title {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    color: var(--violet);
-    margin-bottom: 6px;
-  }
-
-  .modal-sub {
-    font-size: 13px;
-    color: var(--ink-light);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-
-  .quiz-progress {
-    height: 5px;
-    background: var(--violet-light);
-    border-radius: 10px;
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-  .quiz-progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--violet), var(--lavender));
-    border-radius: 10px;
-    transition: width 0.4s ease;
-  }
-
-  .quiz-question {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--ink);
-    margin-bottom: 16px;
-    line-height: 1.4;
-  }
-
-  .quiz-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-
-  .quiz-option {
-    padding: 13px 16px;
-    border-radius: 14px;
-    border: 2px solid var(--violet-light);
-    background: #fff;
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: left;
-    line-height: 1.4;
-  }
-
-  .quiz-option:hover { border-color: var(--violet); background: var(--violet-light); }
-  .quiz-option.selected { border-color: var(--violet); background: var(--violet); color: #fff; }
-
-  .quiz-nav {
-    display: flex;
-    gap: 10px;
-  }
-
-  .btn-back {
-    flex: 1;
-    padding: 14px;
-    border-radius: 14px;
-    border: 2px solid var(--violet-light);
-    background: transparent;
-    color: var(--violet);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-  }
-
-  .btn-next {
-    flex: 2;
-    padding: 14px;
-    border-radius: 14px;
-    border: none;
-    background: linear-gradient(135deg, var(--violet), #9B5FC0);
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    opacity: 0.4;
-    transition: opacity 0.2s;
-  }
-  .btn-next.ready { opacity: 1; }
-
-  /* Ergebnis */
-  .quiz-result {
-    display: none;
-    text-align: center;
-    padding: 8px 0;
-  }
-
-  .result-icon {
-    font-size: 52px;
-    margin-bottom: 12px;
-    display: block;
-  }
-
-  .result-title {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    color: var(--violet);
-    margin-bottom: 8px;
-  }
-
-  .result-score {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--violet), var(--lavender));
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 36px;
-    padding: 10px 28px;
-    border-radius: 16px;
-    margin: 12px 0 16px;
-  }
-
-  .result-text {
-    font-size: 14px;
-    color: var(--ink-light);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-
-  .result-warning {
-    background: #fff3cd;
-    border: 1.5px solid #f5c842;
-    border-radius: 12px;
-    padding: 12px 14px;
-    font-size: 13px;
-    color: #7a5800;
-    margin-bottom: 20px;
-    text-align: left;
-    line-height: 1.5;
-  }
-
-  .btn-tracker {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, var(--violet), #9B5FC0);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    text-align: center;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 20px rgba(123,63,160,0.35);
-  }
-
-  .btn-close-modal {
-    display: block;
-    width: 100%;
-    padding: 13px;
-    border-radius: 14px;
-    border: 2px solid var(--violet-light);
-    background: transparent;
-    color: var(--ink-light);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  /* FOOTER */
-  .footer {
-    text-align: center;
-    font-size: 12px;
-    color: var(--ink-light);
-    opacity: 0.6;
-    margin-top: 8px;
-    animation: fadeUp 0.6s 0.5s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  .link-card:nth-child(1) { animation-delay: 0.1s; }
-  .link-card:nth-child(2) { animation-delay: 0.18s; }
-  .link-card:nth-child(3) { animation-delay: 0.26s; }
-  .link-card:nth-child(4) { animation-delay: 0.34s; }
-  .link-card:nth-child(5) { animation-delay: 0.42s; }
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,26,46,.6); z-index:100; align-items:flex-end; justify-content:center; backdrop-filter:blur(4px); }
+  .modal-overlay.active { display:flex; }
+  .modal { background:var(--cream); border-radius:28px 28px 0 0; padding:28px 24px 40px; width:100%; max-width:480px; max-height:90vh; overflow-y:auto; animation:slideUp .35s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes slideUp { from { transform:translateY(100%); opacity:0; } to { transform:translateY(0); opacity:1; } }
+  .modal-handle { width:40px; height:4px; background:var(--lavender); border-radius:4px; margin:0 auto 20px; }
+  .modal-title { font-family:'Outfit',sans-serif; font-weight:900; font-size:22px; color:var(--violet); margin-bottom:6px; }
+  .modal-sub { font-size:13px; color:var(--ink-light); margin-bottom:24px; line-height:1.5; }
+  .quiz-progress { height:5px; background:var(--violet-light); border-radius:10px; margin-bottom:24px; overflow:hidden; }
+  .quiz-progress-bar { height:100%; background:linear-gradient(90deg,var(--violet),var(--lavender)); border-radius:10px; transition:width .4s ease; width:0%; }
+  .quiz-question { font-family:'Outfit',sans-serif; font-weight:700; font-size:17px; color:var(--ink); margin-bottom:16px; line-height:1.4; }
+  .quiz-options { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+  .quiz-option { padding:13px 16px; border-radius:14px; border:2px solid var(--violet-light); background:#fff; color:var(--ink); font-family:'DM Sans',sans-serif; font-size:14px; cursor:pointer; text-align:left; line-height:1.4; transition:all .15s; width:100%; -webkit-tap-highlight-color:transparent; }
+  .quiz-option:hover { border-color:var(--violet); background:var(--violet-light); }
+  .quiz-option.selected { border-color:var(--violet); background:var(--violet); color:#fff; }
+  .quiz-nav { display:flex; gap:10px; }
+  .btn-back { flex:1; padding:14px; border-radius:14px; border:2px solid var(--violet-light); background:transparent; color:var(--violet); font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; cursor:pointer; }
+  .btn-next { flex:2; padding:14px; border-radius:14px; border:none; background:linear-gradient(135deg,var(--violet),#9B5FC0); color:#fff; font-family:'DM Sans',sans-serif; font-weight:700; font-size:15px; cursor:pointer; opacity:.4; transition:opacity .2s; }
+  .btn-next.ready { opacity:1; }
+  .quiz-result { display:none; text-align:center; padding:8px 0; }
+  .result-icon { font-size:52px; margin-bottom:12px; display:block; }
+  .result-title { font-family:'Outfit',sans-serif; font-weight:900; font-size:22px; color:var(--violet); margin-bottom:8px; }
+  .result-score { display:inline-block; background:linear-gradient(135deg,var(--violet),var(--lavender)); color:#fff; font-family:'Outfit',sans-serif; font-weight:900; font-size:36px; padding:10px 28px; border-radius:16px; margin:12px 0 16px; }
+  .result-text { font-size:14px; color:var(--ink-light); line-height:1.6; margin-bottom:20px; }
+  .result-warning { background:#fff3cd; border:1.5px solid #f5c842; border-radius:12px; padding:12px 14px; font-size:13px; color:#7a5800; margin-bottom:20px; text-align:left; line-height:1.5; }
+  .btn-tracker { display:block; width:100%; padding:16px; border-radius:16px; background:linear-gradient(135deg,var(--violet),#9B5FC0); color:#fff; font-family:'Outfit',sans-serif; font-weight:700; font-size:16px; text-decoration:none; text-align:center; margin-bottom:12px; box-shadow:0 4px 20px rgba(123,63,160,.35); }
+  .btn-close { display:block; width:100%; padding:13px; border-radius:14px; border:2px solid var(--violet-light); background:transparent; color:var(--ink-light); font-family:'DM Sans',sans-serif; font-size:14px; cursor:pointer; }
+  .footer { text-align:center; font-size:12px; color:var(--ink-light); opacity:.6; margin-top:8px; animation:fadeUp .6s .5s ease both; }
+  @keyframes fadeUp { from { transform:translateY(20px); opacity:0; } to { transform:translateY(0); opacity:1; } }
 </style>
 </head>
 <body>
 
 <div class="container">
-
   <div class="header">
-    <div class="logo-wrap">🏆</div>
+    <div class="logo-wrap">&#x1F3C6;</div>
     <div class="brand-name">My Skin Warrior</div>
-    <div class="brand-tagline">Dein täglicher Begleiter bei Hidradenitis suppurativa – Trigger finden, Muster erkennen, Ärzte überzeugen.</div>
+    <div class="brand-tagline">Dein taeglicher Begleiter bei Hidradenitis suppurativa - Trigger finden, Muster erkennen, Aerzte ueberzeugen.</div>
   </div>
 
   <div class="links">
-
-    <!-- 1. HAUPT-CTA: Tracker kaufen -->
     <a href="https://myskinwarrior.gumroad.com/l/btmdsv" target="_blank" class="link-card primary">
-      <div class="lc-icon">📊</div>
+      <div class="lc-icon">&#x1F4CA;</div>
       <div class="lc-text">
-        <div class="lc-title">HS-Tracker herunterladen <span class="badge">5,90 €</span></div>
-        <div class="lc-sub">Trigger finden · Arztbericht · Google Sheets</div>
+        <div class="lc-title">HS-Tracker herunterladen <span class="badge">5,90 EUR</span></div>
+        <div class="lc-sub">Trigger finden &middot; Arztbericht &middot; Google Sheets</div>
       </div>
-      <div class="lc-arrow">→</div>
+      <div class="lc-arrow">&#x2192;</div>
     </a>
 
-    <!-- 2. SYMPTOM CHECKER -->
-    <button class="link-card checker" onclick="openChecker()">
-      <div class="lc-icon">🔍</div>
+    <div class="link-card checker" id="checkerBtn">
+      <div class="lc-icon">&#x1F50D;</div>
       <div class="lc-text">
-        <div class="lc-title">Könnte ich HS haben? <span class="badge" style="background:rgba(255,255,255,0.3)">Quiz</span></div>
-        <div class="lc-sub">Schnell-Check in 2 Minuten · anonym</div>
+        <div class="lc-title">Koennte ich HS haben? <span class="badge" style="background:rgba(255,255,255,.3)">Quiz</span></div>
+        <div class="lc-sub">Schnell-Check in 2 Minuten &middot; anonym</div>
       </div>
-      <div class="lc-arrow">→</div>
-    </button>
+      <div class="lc-arrow">&#x2192;</div>
+    </div>
 
-    <!-- 3. Instagram -->
-    <a href="https://www.instagram.com/myskinwaarrior/" target="_blank" class="link-card secondary">
-      <div class="lc-icon">📸</div>
+    <a href="https://www.instagram.com/myskinwarrior/" target="_blank" class="link-card secondary">
+      <div class="lc-icon">&#x1F4F8;</div>
       <div class="lc-text">
-        <div class="lc-title">@MySkinWarrior auf Instagram</div>
-        <div class="lc-sub">Tipps · Community · Updates</div>
+        <div class="lc-title">@myskinwarrior auf Instagram</div>
+        <div class="lc-sub">Tipps &middot; Community &middot; Updates</div>
       </div>
-      <div class="lc-arrow">→</div>
+      <div class="lc-arrow">&#x2192;</div>
     </a>
 
-    <!-- 4. Kontakt / Fragen -->
-    <a href="/cdn-cgi/l/email-protection#e5889692c88b84868d978c868d91808ba582889dcb8180" class="link-card secondary">
-      <div class="lc-icon">💌</div>
-      <div class="lc-text">
-        <div class="lc-title">Fragen zum Tracker?</div>
-        <div class="lc-sub">Schreib mir direkt</div>
-      </div>
-      <div class="lc-arrow">→</div>
-    </a>
-
+    <div style="text-align:center; padding:10px 0 4px; font-size:13px; color:var(--ink-light);">Fragen? &#x2192; <strong>msw-nachrichten@gmx.de</strong></div>
   </div>
 
   <div class="footer">
-    My Skin Warrior · kein Ersatz für ärztliche Beratung<br>
+    My Skin Warrior &middot; kein Ersatz fuer aerztliche Beratung<br>
     Basis: S2k-Leitlinie HS/Akne inversa (AWMF 2024)
   </div>
-
 </div>
 
-<!-- SYMPTOM CHECKER MODAL -->
-<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modalBox">
+<div class="modal-overlay" id="modal">
+  <div class="modal">
     <div class="modal-handle"></div>
-
     <div id="quizContent">
-      <div class="modal-title">🔍 HS Symptom-Check</div>
-      <div class="modal-sub">8 kurze Fragen. Kein Konto. Keine Daten gespeichert.<br>Kein medizinischer Ersatz — nur ein erster Hinweis.</div>
-
-      <div class="quiz-progress">
-        <div class="quiz-progress-bar" id="progressBar" style="width:0%"></div>
-      </div>
-
+      <div class="modal-title">HS Symptom-Check</div>
+      <div class="modal-sub">8 kurze Fragen. Kein Konto. Keine Daten gespeichert. Kein medizinischer Ersatz.</div>
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="progressBar"></div></div>
       <div class="quiz-question" id="questionText"></div>
       <div class="quiz-options" id="optionsContainer"></div>
-
       <div class="quiz-nav">
-        <button class="btn-back" id="btnBack" onclick="prevQuestion()" style="display:none">← Zurück</button>
-        <button class="btn-next" id="btnNext" onclick="nextQuestion()">Weiter →</button>
+        <button class="btn-back" id="btnBack" style="display:none" onclick="prevQuestion()">Zurueck</button>
+        <button class="btn-next" id="btnNext" onclick="nextQuestion()">Weiter</button>
       </div>
     </div>
-
     <div class="quiz-result" id="quizResult">
       <span class="result-icon" id="resultIcon"></span>
       <div class="result-title" id="resultTitle"></div>
@@ -500,189 +174,120 @@
       <div class="result-text" id="resultText"></div>
       <div class="result-warning" id="resultWarning" style="display:none"></div>
       <a href="https://myskinwarrior.gumroad.com/l/btmdsv" target="_blank" class="btn-tracker" id="resultCTA"></a>
-      <button class="btn-close-modal" onclick="closeChecker()">Schließen</button>
+      <button class="btn-close" onclick="closeChecker()">Schliessen</button>
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const questions = [
-  {
-    q: "Wie lange hast du schon wiederkehrende schmerzhafte Beulen oder Knoten an typischen Stellen (Achseln, Leiste, Gesäß, unter der Brust)?",
-    opts: [
-      { label: "Noch nie / nur einmal", score: 0 },
-      { label: "Seit wenigen Wochen", score: 1 },
-      { label: "Seit Monaten", score: 2 },
-      { label: "Seit Jahren – immer wieder", score: 3 },
-    ]
-  },
-  {
-    q: "Wo treten die Beulen hauptsächlich auf?",
-    opts: [
-      { label: "Gesicht, Rücken oder Brust", score: 0 },
-      { label: "Achseln", score: 3 },
-      { label: "Leiste oder Innenschenkel", score: 3 },
-      { label: "Gesäß oder Intim-Bereich", score: 3 },
-    ]
-  },
-  {
-    q: "Was passiert mit den Beulen?",
-    opts: [
-      { label: "Sie gehen von selbst weg, ohne aufzugehen", score: 0 },
-      { label: "Sie brechen auf und entleeren sich", score: 2 },
-      { label: "Sie kommen immer wieder an der gleichen Stelle", score: 3 },
-      { label: "Sie hinterlassen Narben oder Tunnel unter der Haut", score: 3 },
-    ]
-  },
-  {
-    q: "Wie stark sind die Schmerzen bei einem Schub?",
-    opts: [
-      { label: "Kaum merklich", score: 0 },
-      { label: "Unangenehm, aber erträglich", score: 1 },
-      { label: "Stark – schränkt meinen Alltag ein", score: 2 },
-      { label: "Sehr stark – manchmal unerträglich", score: 3 },
-    ]
-  },
-  {
-    q: "Hat dir bisher ein Arzt oder eine Ärztin HS / Akne inversa diagnostiziert?",
-    opts: [
-      { label: "Ja, ich habe eine offizielle Diagnose", score: 2 },
-      { label: "Nein, aber ich wurde als 'Furunkel' o.ä. behandelt", score: 2 },
-      { label: "Nein – meine Beulen wurden nie richtig untersucht", score: 1 },
-      { label: "Nein, ich habe noch keine Beulen dieser Art", score: 0 },
-    ]
-  },
-  {
-    q: "Gibt es in deiner Familie Menschen mit ähnlichen Hautproblemen?",
-    opts: [
-      { label: "Ja – Eltern oder Geschwister", score: 2 },
-      { label: "Ja – entferntere Verwandte", score: 1 },
-      { label: "Nicht dass ich wüsste", score: 0 },
-    ]
-  },
-  {
-    q: "Verschlimmern sich die Beschwerden bei Stress, Hitze oder hormonellen Schwankungen (z.B. vor der Periode)?",
-    opts: [
-      { label: "Ja, deutlich", score: 2 },
-      { label: "Manchmal schon", score: 1 },
-      { label: "Nein", score: 0 },
-    ]
-  },
-  {
-    q: "Wie lange dauert es typischerweise bis eine neue Beule wieder abklingt?",
-    opts: [
-      { label: "Ein paar Tage", score: 0 },
-      { label: "1–2 Wochen", score: 1 },
-      { label: "Mehrere Wochen oder länger", score: 2 },
-      { label: "Ich habe ständig aktive Beulen – es hört nie ganz auf", score: 3 },
-    ]
-  },
+<script>
+var Q = [
+  { q:"1. Wie lange hast du wiederkehrende schmerzhafte Beulen an typischen Stellen (Achseln, Leiste, Gesaess)?", o:[{t:"Noch nie / nur einmal",s:0},{t:"Seit wenigen Wochen",s:1},{t:"Seit Monaten",s:2},{t:"Seit Jahren - immer wieder",s:3}] },
+  { q:"2. Wo treten die Beulen hauptsaechlich auf?", o:[{t:"Gesicht, Ruecken oder Brust",s:0},{t:"Achseln",s:3},{t:"Leiste oder Innenschenkel",s:3},{t:"Gesaess oder Intim-Bereich",s:3}] },
+  { q:"3. Was passiert mit den Beulen?", o:[{t:"Gehen von selbst weg ohne aufzugehen",s:0},{t:"Brechen auf und entleeren sich",s:2},{t:"Kommen immer wieder an gleicher Stelle",s:3},{t:"Hinterlassen Narben oder Tunnel unter der Haut",s:3}] },
+  { q:"4. Wie stark sind die Schmerzen bei einem Schub?", o:[{t:"Kaum merklich",s:0},{t:"Unangenehm, aber ertraeglich",s:1},{t:"Stark - schraenkt meinen Alltag ein",s:2},{t:"Sehr stark - manchmal unertraeglich",s:3}] },
+  { q:"5. Hat dir ein Arzt HS / Akne inversa diagnostiziert?", o:[{t:"Ja, ich habe eine offizielle Diagnose",s:2},{t:"Nein, aber als Furunkel behandelt",s:2},{t:"Nein - nie richtig untersucht",s:1},{t:"Nein, ich habe keine Beulen dieser Art",s:0}] },
+  { q:"6. Gibt es in deiner Familie Menschen mit aehnlichen Hautproblemen?", o:[{t:"Ja - Eltern oder Geschwister",s:2},{t:"Ja - entferntere Verwandte",s:1},{t:"Nicht dass ich wuesste",s:0}] },
+  { q:"7. Verschlimmern sich Beschwerden bei Stress, Hitze oder hormonellen Schwankungen?", o:[{t:"Ja, deutlich",s:2},{t:"Manchmal schon",s:1},{t:"Nein",s:0}] },
+  { q:"8. Wie lange bis eine neue Beule abklingt?", o:[{t:"Ein paar Tage",s:0},{t:"1-2 Wochen",s:1},{t:"Mehrere Wochen oder laenger",s:2},{t:"Es hoert nie auf - immer aktive Beulen",s:3}] }
 ];
 
-let current = 0;
-let answers = new Array(questions.length).fill(null);
+var cur = 0;
+var ans = [-1,-1,-1,-1,-1,-1,-1,-1];
 
 function openChecker() {
-  current = 0;
-  answers = new Array(questions.length).fill(null);
+  cur = 0;
+  ans = [-1,-1,-1,-1,-1,-1,-1,-1];
   document.getElementById('quizContent').style.display = 'block';
   document.getElementById('quizResult').style.display = 'none';
-  document.getElementById('modal').classList.add('active');
-  renderQuestion();
+  document.getElementById('modal').className = 'modal-overlay active';
+  render();
 }
 
 function closeChecker() {
-  document.getElementById('modal').classList.remove('active');
+  document.getElementById('modal').className = 'modal-overlay';
 }
 
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('modal')) closeChecker();
+function render() {
+  var q = Q[cur];
+  document.getElementById('questionText').textContent = q.q;
+  document.getElementById('progressBar').style.width = Math.round((cur/Q.length)*100) + '%';
+  var c = document.getElementById('optionsContainer');
+  c.innerHTML = '';
+  for (var i=0; i<q.o.length; i++) {
+    (function(i){
+      var b = document.createElement('button');
+      b.className = 'quiz-option' + (ans[cur]===i?' selected':'');
+      b.textContent = q.o[i].t;
+      b.onclick = function(){ pick(i); };
+      c.appendChild(b);
+    })(i);
+  }
+  document.getElementById('btnBack').style.display = cur>0?'block':'none';
+  var nb = document.getElementById('btnNext');
+  nb.textContent = cur===Q.length-1?'Ergebnis anzeigen':'Weiter';
+  nb.className = 'btn-next'+(ans[cur]>=0?' ready':'');
 }
 
-function renderQuestion() {
-  const q = questions[current];
-  document.getElementById('questionText').textContent = `${current + 1}. ${q.q}`;
-  document.getElementById('progressBar').style.width = `${((current) / questions.length) * 100}%`;
-
-  const cont = document.getElementById('optionsContainer');
-  cont.innerHTML = '';
-  q.opts.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-option' + (answers[current] === i ? ' selected' : '');
-    btn.textContent = opt.label;
-    btn.onclick = () => selectOption(i);
-    cont.appendChild(btn);
-  });
-
-  document.getElementById('btnBack').style.display = current > 0 ? 'block' : 'none';
-  const nextBtn = document.getElementById('btnNext');
-  nextBtn.textContent = current === questions.length - 1 ? 'Ergebnis anzeigen →' : 'Weiter →';
-  nextBtn.className = 'btn-next' + (answers[current] !== null ? ' ready' : '');
-}
-
-function selectOption(i) {
-  answers[current] = i;
-  document.querySelectorAll('.quiz-option').forEach((btn, idx) => {
-    btn.classList.toggle('selected', idx === i);
-  });
-  document.getElementById('btnNext').classList.add('ready');
+function pick(i) {
+  ans[cur] = i;
+  var bs = document.querySelectorAll('.quiz-option');
+  for (var j=0; j<bs.length; j++) bs[j].className='quiz-option'+(j===i?' selected':'');
+  document.getElementById('btnNext').className = 'btn-next ready';
 }
 
 function nextQuestion() {
-  if (answers[current] === null) return;
-  if (current < questions.length - 1) {
-    current++;
-    renderQuestion();
-  } else {
-    showResult();
-  }
+  if (ans[cur]<0) return;
+  if (cur<Q.length-1) { cur++; render(); }
+  else showResult();
 }
 
 function prevQuestion() {
-  if (current > 0) { current--; renderQuestion(); }
+  if (cur>0) { cur--; render(); }
 }
 
 function showResult() {
-  const total = answers.reduce((sum, a, i) => {
-    if (a === null) return sum;
-    return sum + questions[i].opts[a].score;
-  }, 0);
-  const maxScore = questions.reduce((s, q) => s + Math.max(...q.opts.map(o => o.score)), 0);
-  const pct = Math.round((total / maxScore) * 100);
-
-  document.getElementById('quizContent').style.display = 'none';
-  document.getElementById('quizResult').style.display = 'block';
-  document.getElementById('progressBar').style.width = '100%';
-
-  let icon, title, text, cta, showWarning;
-
-  if (pct >= 65) {
-    icon = '🚨';
-    title = 'Deine Antworten klingen sehr vertraut';
-    text = 'Das Muster, das du beschreibst, stimmt stark mit den typischen Zeichen von Hidradenitis suppurativa (HS) überein. Das bedeutet nicht zwingend eine Diagnose – aber es ist ein deutliches Signal, das ernst genommen werden sollte. Sprich bitte mit einer Hautärztin oder einem Hautarzt, am besten mit HS-Erfahrung.';
-    cta = '🏆 HS-Tracker herunterladen → Trigger finden';
-    showWarning = true;
-  } else if (pct >= 35) {
-    icon = '🟠';
-    title = 'Einige Übereinstimmungen mit HS';
-    text = 'Deine Antworten zeigen einige Merkmale, die bei HS auftreten können. Das kann vieles bedeuten – ein Arztbesuch lohnt sich, um Klarheit zu bekommen. Wenn du bereits Beschwerden trackst, kann das beim nächsten Termin sehr helfen.';
-    cta = '📊 Tracker testen → Muster erkennen';
-    showWarning = false;
-  } else {
-    icon = '🟢';
-    title = 'Wenig Übereinstimmung mit HS';
-    text = 'Deine Antworten deuten nicht stark auf Hidradenitis suppurativa hin. Das ist eine gute Nachricht! Wenn du trotzdem unsicher bist oder Beschwerden hast, ist ein Arztbesuch immer sinnvoll.';
-    cta = '📚 Mehr über HS erfahren';
-    showWarning = false;
+  var tot=0, max=0;
+  for (var i=0; i<Q.length; i++) {
+    if (ans[i]>=0) tot+=Q[i].o[ans[i]].s;
+    var m=0; for(var j=0;j<Q[i].o.length;j++) if(Q[i].o[j].s>m) m=Q[i].o[j].s;
+    max+=m;
   }
+  var pct = Math.round((tot/max)*100);
+  document.getElementById('quizContent').style.display='none';
+  document.getElementById('quizResult').style.display='block';
+  document.getElementById('progressBar').style.width='100%';
+  var icon,title,text,cta,warn;
+  if (pct>=65) {
+    icon='&#x1F6A8;'; title='Deine Antworten klingen sehr vertraut';
+    text='Das Muster stimmt stark mit typischen Zeichen von Hidradenitis suppurativa ueberein. Kein Ersatz fuer eine Diagnose - aber ein deutliches Signal. Bitte sprich mit einer Hautaerztin oder einem Hautarzt.';
+    cta='HS-Tracker herunterladen - Trigger finden'; warn=true;
+  } else if (pct>=35) {
+    icon='&#x1F7E0;'; title='Einige Uebereinstimmungen mit HS';
+    text='Deine Antworten zeigen Merkmale die bei HS auftreten koennen. Ein Arztbesuch lohnt sich. Wenn du Beschwerden trackst kann das beim naechsten Termin sehr helfen.';
+    cta='Tracker testen - Muster erkennen'; warn=false;
+  } else {
+    icon='&#x1F7E2;'; title='Wenig Uebereinstimmung mit HS';
+    text='Deine Antworten deuten nicht stark auf Hidradenitis suppurativa hin. Wenn du unsicher bist oder Beschwerden hast, ist ein Arztbesuch immer sinnvoll.';
+    cta='Mehr ueber HS erfahren'; warn=false;
+  }
+  document.getElementById('resultIcon').innerHTML=icon;
+  document.getElementById('resultTitle').textContent=title;
+  document.getElementById('resultScore').textContent=pct+' % Uebereinstimmung';
+  document.getElementById('resultText').textContent=text;
+  document.getElementById('resultCTA').textContent=cta;
+  var w=document.getElementById('resultWarning');
+  if(warn){w.style.display='block';w.textContent='Dies ist kein medizinischer Test. Bei starken Beschwerden bitte einen Arzt aufsuchen.';}
+  else{w.style.display='none';}
+}
 
-  document.getElementById('resultIcon').textContent = icon;
-  document.getElementById('resultTitle').textContent = title;
-  document.getElementById('resultScore').textContent = `${pct} % Übereinstimmung`;
-  document.getElementById('resultText').textContent = text;
-  document.getElementById('resultCTA').textContent = cta;
-
-  const warn = document.getElementById('resultWarning');
-  if (showWarning) {
-    warn.style.display = 'block';
-    warn.textContent = '⚠️ Dies ist kein medizinischer Test und ersetzt keine ärztliche Diagn
+document.addEventListener('DOMContentLoaded', function() {
+  var cb = document.getElementById('checkerBtn');
+  cb.addEventListener('click', openChecker);
+  cb.addEventListener('touchend', function(e){ e.preventDefault(); openChecker(); });
+  document.getElementById('modal').addEventListener('click', function(e){
+    if(e.target===this) closeChecker();
+  });
+});
+</script>
+</body>
+</html>
